@@ -30,6 +30,8 @@ I've included a 404 template though, if you turn it on in Templates->Global Pref
 
 I've swapped out what appears to be Proxima Nova from typekit for PT Sans from Google Web Fonts. The original theme didn't include any fonts but, the Pea.rs website did so, I'v added a font which is similar.
 
+This theme doesn't use any add-ons by default and the template isn't setup for performance or things of that nature. There are many practices which were used here that could be done different or even better though, for sake of simplicity, being a theme, this is the way I have gone about it.
+
 h2. Change Log
 
 +*Feb 27, 2012: 1.0.0*+
