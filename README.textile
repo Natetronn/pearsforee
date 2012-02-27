@@ -28,7 +28,7 @@ You can manually add images to an entry by using <code>{theme_folder_url}site_th
 
 I've included a 404 template though, if you turn it on in Templates->Global Preferences the theme won't work properly. I have tried to mimic Pea.rs url structure as close as possible though, that caused some issues due to the fact that everything is using the defualt index.html.
 
-I've swapped out what appears to be Proxima Nova from typekit for PT Sans from Google Web Fonts. The original theme didn't include although the Pea.rs website does so, I'v added a font which is similar.
+I've swapped out what appears to be Proxima Nova from typekit for PT Sans from Google Web Fonts. The original theme didn't include any fonts but, the Pea.rs website did so, I'v added a font which is similar.
 
 h2. Change Log
 
@@ -37,6 +37,6 @@ h2. Change Log
 * Initial Release
 
 
-h2. To Do Thoughts
+h2. To Do and Thoughts
 
 * Figure out if there is a way to achieve the current url structure and have 404 template.
