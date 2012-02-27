@@ -1,0 +1,40 @@
+h1. Pears for EE
+
+Pears for EE is an ExpressionEngine theme conversion based upon "Pears":http://pea.rs by "SimpleBit":http://simplebits.com/ and was originally a "Wordpress theme":https://github.com/simplebits/Pears.
+
+Let me know if you need any assistance. Contact "me on twitter":http://twitter.com/natetronn or via "my website":http://natetronn.com/.
+
+h2. Compatibility
+
+* ExpressionEngine 2.x+ 
+* Tested in 2.4.0
+
+h2. Installation
+
+*For EE2*
+* Un-zip a fresh copy of ExpressionEngine to your dev server.
+* Place pears theme folder <code>themes/site_themes/pears</code> into your <code>themes/site_themes/</code> directory.
+* Install ExpressionEngine and select Pears as your theme from the "Choose your Site Theme" dropdown on the insaller settings page.
+
+h2. Usage
+
+You can create a new entry, set it's category, add in the title, html and css and your done.
+
+If you want you can also create a new category and it will show up in the menu with entries of said category.
+
+h2. Notes
+
+You can manually add images to an entry by using <code>{theme_folder_url}site_themes/pears/img/yourimage.jpg</code> and placing the image in the img folder of the theme or you can put them in your prefere location<code>{site_url}some/image/folder/yourimage.jpg</code>
+
+I've included a 404 template though, if you turn it on in Templates->Global Preferences the theme won't work properly. I have tried to mimic Pea.rs url structure as close as possible though, that caused some issues due to the fact that everything is using the defualt index.html. 
+
+h2. Change Log
+
++*Feb 27, 2012: 1.0.0*+
+
+* Initial Release
+
+
+h2. To Do Thoughts
+
+* Figure out if there is a way to achieve the current url structure and have 404 template.

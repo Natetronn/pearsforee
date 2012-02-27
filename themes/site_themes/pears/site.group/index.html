@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <!-- hide css from IE6 but load for everyone else -->
+        <!--[if gte IE 7]><!-->
+        <link rel="stylesheet/less" media="screen, projection" href="{theme_folder_url}site_themes/pears/css/screen.less">
+        <!-- <![endif]-->
+        <link rel="shortcut icon" href="{theme_folder_url}site_themes/pears/img/favicon.png"><!-- enable HTML5 elements in IE7+8 -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+		<link href="http://fonts.googleapis.com/css?family=PT Sans&subset=latin" rel="stylesheet" type="text/css">
+		<style>
+		* {font-family: 'PT Sans', sans-serif;}
+		</style>
+        <script type="text/javascript" src="{theme_folder_url}site_themes/pears/js/less.js"></script>
+		{if segment_1 =="category"}
+		<title>{site_name} / {exp:channel:category_heading channel="pears"}{category_name}{/exp:channel:category_heading}</title>
+		{/if}
+        {if segment_1 !="category"}
+		{exp:channel:entries channel="pears" limit="1" disable="categories|category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
+		<title>{site_name} / {title}</title>
+		<style id="s" type="text/css">
+            {css}
+        </style>
+		{/exp:channel:entries}
+		{/if}
+    </head>
+    <body>
+        <header role="banner" class="group">
+            <a href="{site_url}" id="logo">Pears <em>are common patterns of markup &amp; style</em></a>
+        </header>
+        <div class="wrap group">
+            <div class="main" role="main">
+			
+				{if segment_1 =="author"}
+					{exp:channel:entries channel="pears" limit="1" disable="custom_fields|categories|category_fields|member_data|pagination"}
+					<h1 class="page-title author">Author Archives: 
+						<span class="vcard">
+							<a class="url fn n" href="{path='author/{author}'}" title="{author}" rel="me">{author}</a>
+						</span>
+					</h1>
+					{/exp:channel:entries}					
+					{exp:channel:entries channel="pears" paginate="both" dynamic="yes" limit="10" sort="desc" disable="custom_fields|category_fields|member_data"}
+					{paginate}
+					<div id="nav-above" class="navigation">
+						{if previous_page}
+						<div class="nav-previous">
+							<a href="{auto_path}">Newer posts <span class="meta-nav">&rarr;</span></a>
+						</div>
+						{/if}
+						{if next_page}
+						<div class="nav-next">
+							<a href="{auto_path}"><span class="meta-nav">&larr;</span> Older posts</a>
+						</div>
+						{/if}
+					</div>
+					{/paginate}
+					
+					<div>
+						<h2 class="entry-title">
+							<a href="{path='{categories}{category_url_title}{/categories}/{url_title}'}" title="Permalink to {title}" rel="bookmark">{title}</a>
+						</h2>
+
+						<div class="entry-meta">
+							<span class="meta-prep meta-prep-author">Posted on</span>
+							<a href="{path='{categories}{category_url_title}{/categories}/{url_title}'}" title="{entry_date format='%g:%i %A'}" rel="bookmark">
+								<span class="entry-date">{entry_date format="%F %d, %Y"}</span>
+							</a>
+							<span class="meta-sep">by</span>
+							<span class="author vcard">
+								<a class="url fn n" href="{path='author/{author}'}" title="View all posts by {author}">{author}</a>
+							</span>			
+						</div><!-- .entry-meta -->
+
+							<div class="entry-summary">
+							</div><!-- .entry-summary -->
+				
+						<div class="entry-utility">
+							<span class="cat-links">
+							<span class="entry-utility-prep entry-utility-prep-cat-links">Posted in</span>
+								{categories}
+									<a href="{category_url_title}" title="View all posts in {category_name}" rel="category tag">{category_name}</a>
+								{/categories}
+							</span>
+							<span class="meta-sep">|</span>
+							<span class="comments-link">
+								<a href="#" title="Comment on {title}">Leave a comment</a>
+							</span>
+						</div><!-- .entry-utility -->
+					</div>
+					
+					{paginate}
+					<div id="nav-bottom" class="navigation">
+						{if previous_page}
+						<div class="nav-previous">
+							<a href="{auto_path}"><span class="meta-nav">&larr;</span> Older posts</a>
+						</div>
+						{/if}
+						{if next_page}
+						<div class="nav-next">
+							<a href="{auto_path}">Newer posts <span class="meta-nav">&rarr;</span></a>
+						</div>
+						{/if}
+					</div>
+					{/paginate}
+					
+				{/exp:channel:entries}
+					
+				{/if}
+			
+				{if segment_1 =="category"}
+				
+					{exp:channel:category_heading channel="pears"}
+						<h1>Category Archives: {category_name}</h1>
+					{/exp:channel:category_heading}
+					
+					{exp:channel:entries channel="pears" dynamic="yes" orderby="title" sort="asc" disable="custom_fields|category_fields|member_data|pagination"}
+					<div>
+						<h2 class="entry-title">
+							<a href="{path='{categories}{category_url_title}{/categories}/{url_title}'}" title="Permalink to {title}" rel="bookmark">{title}</a>
+						</h2>
+
+						<div class="entry-meta">
+							<span class="meta-prep meta-prep-author">Posted on</span>
+							<a href="{path='{categories}{category_url_title}{/categories}/{url_title}'}" title="{entry_date format='%g:%i %A'}" rel="bookmark">
+								<span class="entry-date">{entry_date format="%F %d, %Y"}</span>
+							</a>
+							<span class="meta-sep">by</span>
+							<span class="author vcard">
+								<a class="url fn n" href="{path='author/{author}'}" title="View all posts by admin">{author}</a>
+							</span>			
+						</div><!-- .entry-meta -->
+
+							<div class="entry-summary">
+							</div><!-- .entry-summary -->
+				
+						<div class="entry-utility">
+							<span class="cat-links">
+							<span class="entry-utility-prep entry-utility-prep-cat-links">Posted in</span>
+								{categories}
+									<a href="{category_url_title}" title="View all posts in {category_name}" rel="category tag">{category_name}</a>
+								{/categories}
+							</span>
+							<span class="meta-sep">|</span>
+							<span class="comments-link">
+								<a href="#" title="Comment on {title}">Leave a comment</a>
+							</span>
+						</div><!-- .entry-utility -->
+					</div>
+				{/exp:channel:entries}
+			{/if}
+		
+			{if segment_1 !="category"}
+			{if segment_1 !="author"}
+                <div id="pattern" class="mod group">
+                    <h3 class="label">Pattern</h3>
+					{exp:channel:entries channel="pears" limit="1" disable="category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
+                    {if segment_1 !=""}
+					<h4>
+						{categories}
+                        <a href="{path='SITE_INDEX'}" title="View all posts in {category_name}" rel="category">{category_name}</a>
+                        {/categories}
+                        <span class="sep">&rarr;</span> {title}
+                    </h4>
+					{/if}
+                    <div id="pattern-wrap" class="group">
+                        {html}
+                    </div>
+					{/exp:channel:entries}
+                </div>
+                <div class="group">
+                    <div id="markup" class="mod">
+                        <h3 class="label">HTML</h3>
+                        <a href="#" class="clip" title="select code for copying"><img src="{theme_folder_url}site_themes/pears/img/icon-copy.png" alt="copy"></a> 
+                        <textarea class="mod-ta">
+{exp:channel:entries channel="pears" limit="1" disable="categories|category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
+{html}
+{/exp:channel:entries}
+                        </textarea>
+                    </div>
+                    <div id="style" class="mod">
+                        <h3 class="label">CSS</h3>
+                        <a href="#" class="clip" title="select code for copying"><img src="{theme_folder_url}site_themes/pears/img/icon-copy.png" alt="copy"></a> 
+                        <textarea id="css-code" class="mod-ta">
+{exp:channel:entries channel="pears" limit="1" disable="categories|category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
+{css}
+{/exp:channel:entries}                                
+                        </textarea>
+                    </div>
+                </div>
+				{exp:channel:entries channel="pears" limit="1" disable="categories|category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
+				{if notes}
+				<div id="pattern-notes" class="mod">
+					<h3 class="label">Notes</h3>
+					{notes}
+				</div>
+				{/if}
+				{/exp:channel:entries}
+				
+			{/if}
+			{/if}
+				
+                <nav id="nav" class="group">
+                    <a href="#" id="nav-toggle">hide</a>				 
+                    {exp:channel:categories channel="pears" style="linear"}
+                    <h2><a href="{path='SITE_INDEX'}">{category_name}</a></h2>
+                    <ul>
+                        {exp:channel:entries channel="pears" dynamic="no" category="{category_id}" orderby="title" sort="asc" disable="custom_fields|categories|category_fields|member_data|pagination"}
+                        <li><a href="{title_permalink='{category_url_title}'}">{title}</a></li>
+                        {/exp:channel:entries}
+                    </ul>
+                    {/exp:channel:categories}
+                </nav>
+
+            </div><!-- /wrap -->
+            <div id="pears-footer">
+                <p>
+                    Pears is handcrafted in Salem, Massachusetts by <a href="http://simplebits.com">SimpleBits</a>.
+					<br/>
+					Pears for EE was re-handcrafted in San Diego, California by <a href="http://natetronn.com">Natetronn</a>.
+                </p>
+                <p class="cc">
+                    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+                </p>
+                <p>
+                    <a href="http://simplebits.com" id="sb"><img src="{theme_folder_url}site_themes/pears/img/sb-black.png" alt="Image"></a>
+                </p>
+            </div><!-- /footer -->
+            <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(document).ready(function() { 
+                    // update rendered pattern when user edits the textareas
+                    $('#markup textarea').live('keyup', function(e) {
+                        $('#pattern-wrap').html($(this).val());
+                    });
+                    $('#style textarea').live('keyup', function(e) {
+                        $('div.main style').html($(this).val());
+                    });
+
+                    // auto-select code in textarea when clipboard icon is clicked
+                    $('#markup a.clip').click(function(){
+                        $('#markup textarea').select();
+                        return false;
+                    });
+                    $('#style a.clip').click(function(){
+                        $('#style textarea').select();
+                        return false;
+                    });
+
+                    // expand/collapse side nav
+                    $('#nav-toggle').click(function() {
+                        $('body').toggleClass('expanded');
+                        return false;
+                    });
+                }); 
+            </script>
+        </div>
+    </body>
+</html>

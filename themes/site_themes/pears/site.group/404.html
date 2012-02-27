@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <!-- hide css from IE6 but load for everyone else -->
+        <!--[if gte IE 7]><!-->
+        <link rel="stylesheet/less" media="screen, projection" href="{theme_folder_url}site_themes/pears/css/screen.less">
+        <!-- <![endif]-->
+        <link rel="shortcut icon" href="{theme_folder_url}site_themes/pears/favicon.png"><!-- enable HTML5 elements in IE7+8 -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+		<link href="http://fonts.googleapis.com/css?family=PT Sans&subset=latin" rel="stylesheet" type="text/css">
+		<style>
+		* {
+			font-family: 'PT Sans', sans-serif;
+		}
+		</style>
+        <script type="text/javascript" src="{theme_folder_url}site_themes/pears/js/less.js"></script>
+        {exp:channel:entries channel="pears" limit="1" disable="categories|category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
+		<title>Pears / {title}</title>
+		<style id="s" type="text/css">
+            {css}
+        {/exp:channel:entries}
+        </style>
+    </head>
+    <body>
+        <header role="banner" class="group">
+            <a href="{site_url}" id="logo">Pears <em>are common patterns of markup &amp; style</em></a>
+        </header>
+        <div class="wrap group">
+            <div class="main" role="main">
+				<div class="post error404 not-found">
+					<h1 class="entry-title">Not Found</h1>
+					<div class="entry-content">
+						<p>Apologies, but the page you requested could not be found. Perhaps searching will help.</p>
+						<div>
+							{exp:search:simple_form channel="pears"}						
+							<label for="keywords">Search for:</label><br>
+							<input type="text" name="keywords" id="keywords" value="" size="36" maxlength="100">
+							<input type="submit" id="submit" value="Search">
+							{/exp:search:simple_form}
+						</div>
+					</div><!-- .entry-content -->
+				</div>
+				
+                <nav id="nav" class="group">
+                    <a href="#" id="nav-toggle">hide</a>				 
+                    {exp:channel:categories channel="pears" style="linear"}
+                    <h2><a href="{path='SITE_INDEX'}">{category_name}</a></h2>
+                    <ul>
+                        {exp:channel:entries channel="pears" dynamic="no" category="{category_id}" orderby="title" sort="asc" disable="custom_fields|categories|category_fields|member_data|pagination"}
+                        <li><a href="{title_permalink='{category_url_title}/'}">{title}</a></li>
+                        {/exp:channel:entries}
+                    </ul>
+                    {/exp:channel:categories}
+                </nav>
+
+            </div><!-- /wrap -->
+            <div id="pears-footer">
+                <p>
+                    Pears is handcrafted in Salem, Massachusetts by <a href="http://simplebits.com">SimpleBits</a>.
+                </p>
+                <p class="cc">
+                    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+                </p>
+                <p>
+                    <a href="http://simplebits.com" id="sb"><img src="{theme_folder_url}site_themes/pears/img/sb-black.png" alt="Image"></a>
+                </p>
+            </div><!-- /footer -->
+            <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(document).ready(function() { 
+                    // update rendered pattern when user edits the textareas
+                    $('#markup textarea').live('keyup', function(e) {
+                        $('#pattern-wrap').html($(this).val());
+                    });
+                    $('#style textarea').live('keyup', function(e) {
+                        $('div.main style').html($(this).val());
+                    });
+
+                    // auto-select code in textarea when clipboard icon is clicked
+                    $('#markup a.clip').click(function(){
+                        $('#markup textarea').select();
+                        return false;
+                    });
+                    $('#style a.clip').click(function(){
+                        $('#style textarea').select();
+                        return false;
+                    });
+
+                    // expand/collapse side nav
+                    $('#nav-toggle').click(function() {
+                        $('body').toggleClass('expanded');
+                        return false;
+                    });
+                }); 
+            </script>
+        </div>
+    </body>
+</html>
