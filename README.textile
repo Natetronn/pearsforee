@@ -36,7 +36,7 @@ h2. Change Log
 
 +*Mar 16, 2012: 1.0.1*+
 
-* Moved the CSS from the head to content aread so you can live edit.
+* Moved the CSS from the head to content area so you can live edit.
 
 *Feb 27, 2012: 1.0.0*
 
