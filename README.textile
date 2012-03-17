@@ -34,7 +34,11 @@ This theme doesn't use any add-ons by default and the template isn't setup for p
 
 h2. Change Log
 
-+*Feb 27, 2012: 1.0.0*+
++*Mar 16, 2012: 1.0.1*+
+
+* Moved the CSS from the head to content aread so you can live edit.
+
+*Feb 27, 2012: 1.0.0*
 
 * Initial Release
 

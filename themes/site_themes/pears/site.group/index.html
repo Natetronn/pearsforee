@@ -22,9 +22,6 @@
         {if segment_1 !="category"}
 		{exp:channel:entries channel="pears" limit="1" disable="categories|category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
 		<title>{site_name} / {title}</title>
-		<style id="s" type="text/css">
-            {css}
-        </style>
 		{/exp:channel:entries}
 		{/if}
     </head>
@@ -155,6 +152,11 @@
 		
 			{if segment_1 !="category"}
 			{if segment_1 !="author"}
+{exp:channel:entries channel="pears" limit="1" disable="categories|category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
+<style id="s" type="text/css">
+{css}
+</style>
+{/exp:channel:entries}
                 <div id="pattern" class="mod group">
                     <h3 class="label">Pattern</h3>
 					{exp:channel:entries channel="pears" limit="1" disable="category_fields|member_data|pagination" {if segment_1 ==""}url_title="welcome"{/if} {if segment_2 !=""}url_title="{segment_2}"{/if}}
